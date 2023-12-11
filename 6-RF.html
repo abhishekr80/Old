@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        #feedbackForm {
+            display: block;
+        }
+
+        #confirmationSection {
+            display: none;
+        }
+    </style>
+</head>
+<center>
+<body style="background-color:cadetblue">
+
+<div id="feedbackForm">
+    <h2>Feedback Form</h2>
+    <form id="userForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+	<br>
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" required></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div id="confirmationSection">
+    <h2>Thank you for your feedback!</h2>
+    <p>We appreciate your input.</p>
+</div>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+
+        // Get form valuesr
+        const name = document.getElementById('name').value;
+        const feedback = document.getElementById('feedback').value;
+
+        // You can perform additional actions with the form data, such as sending it to a server.
+
+        // Hide the form
+        document.getElementById('feedbackForm').style.display = 'none';
+
+        // Display the confirmation section
+        document.getElementById('confirmationSection').style.display = 'block';
+    }
+</script>
+</center>
+</body>
+</html>

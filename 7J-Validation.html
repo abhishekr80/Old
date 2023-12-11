@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoB ApplicatioN ForM</title>
+</head>
+<center>
+
+    <body class="s1" style="background-color: antiquewhite;">
+        <h1>
+            <center>JOB APPLICATION</center>
+        </h1>
+        Name: <input type="text" id="f_name"><br><br>
+        Father's Name: <input type="text" id="father_name"><br><br>
+        Date of Birth: <input type="text" id="DOB"><br><br>
+        Gender:
+        <input type="radio" id="male"> Male
+        <input type="radio" id="female"> Female <br><br>
+        Companies: <select>
+            <option> Infosys </option>
+            <option> Amazon </option>
+            <option> Tata Consultancy Services</option>
+            <option>Titan Company</option>
+            <option> Britannia Industries</option>
+            <option> Bosco</option>
+        </select><br><br>
+        Qualification: <select>
+            <option> M tech </option>
+            <option> Diploma </option>
+            <option> Engineering </option>
+        </select><br><br>
+        Work Experience:&nbsp;<input type="text" id="work_experience"><br><br>
+        Skills:&nbsp;<input type="text" placeholder="    List Your Skills" id="skills"><br><br>
+        Mobile No:&nbsp;<input type="text" id="mob_no"><br><br>
+        Email ID:&nbsp;<input type="text" id="email"><br><br>
+        Address:&nbsp;<input type="text" id="address"><br><br>
+        Certificates:&nbsp;<input type="file" id="photo"><br><br>
+
+        <button onclick="validateAll()">Submit</button>
+
+        <script>
+            function validateAll() {
+                // Perform individual validations
+                if (!validateName("f_name")) return;
+                if (!validateName("father_name")) return;
+                if (!validateDOB("DOB")) return;
+                if (!validateGender()) return;
+                if (!validateExperience("work_experience")) return;
+                if (!validateSkills("skills")) return;
+                if (!validateMobile("mob_no")) return;
+                if (!validateEmail("email")) return;
+
+                // If all validations pass, submit the form
+                alert("Form submitted successfully!");
+            }
+
+            function validateName(fieldId) {
+                var name = document.getElementById(fieldId).value.trim();
+                if (name === "") {
+                    alert("Please enter a valid name.");
+                    return false;
+                }
+                return true;
+            }
+
+            function validateDOB(fieldId) {
+                var dob = document.getElementById(fieldId).value.trim();
+                if (dob === "") {
+                    alert("Please enter a valid date of birth.");
+                    return false;
+                }
+                // You can add more specific date of birth validation here if needed
+                return true;
+            }
+
+            function validateGender() {
+                var maleChecked = document.getElementById("male").checked;
+                var femaleChecked = document.getElementById("female").checked;
+                if (!maleChecked && !femaleChecked) {
+                    alert("Please select a gender.");
+                    return false;
+                }
+                return true;
+            }
+
+            function validateExperience(fieldId) {
+                var experience = document.getElementById(fieldId).value.trim();
+                if (experience === "") {
+                    alert("Please enter a valid work experience.");
+                    return false;
+                }
+                // You can add more specific work experience validation here if needed
+                return true;
+            }
+
+            function validateSkills(fieldId) {
+                var skills = document.getElementById(fieldId).value.trim();
+                if (skills === "") {
+                    alert("Please enter your skills.");
+                    return false;
+                }
+                // You can add more specific skills validation here if needed
+                return true;
+            }
+
+            function validateMobile(fieldId) {
+                var mobile = document.getElementById(fieldId).value.trim();
+                if (mobile === "" || isNaN(mobile) || mobile.length !== 10) {
+                    alert("Please enter a valid 10-digit mobile number.");
+                    return false;
+                }
+                return true;
+            }
+
+            function validateEmail(fieldId) {
+                var email = document.getElementById(fieldId).value.trim();
+                // Basic email validation, you can enhance it as needed
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+</center>
+</body>
+
+</html>
